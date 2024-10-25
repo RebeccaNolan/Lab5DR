@@ -4,19 +4,6 @@ const port = 4000;
 
 const path = require('path');
 
-//Path module from index.html
-app.get('/index', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// '/' local host - domain
-//listen for HTTP request
-app.get('/', (req, res) => { //req- request res - response
-    res.send('Welcome to Data Representation & Querying');
-});
-
-app.use(express.static('public')); //serve static assets 
-
 //name
 app.get('/hello/:name', (req, res) => {
     const name = req.params.name;
@@ -57,6 +44,26 @@ app.get('/api/movies', (req, res) => {
     res.status(200).json({ myMovies:movies }); //return JSON response
     //res.json({ movies }); //sending array back
 });
+
+//Path module from index.html
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// '/' local host - domain
+//listen for HTTP request
+app.get('/', (req, res) => { //req- request res - response
+    res.send('Welcome to Data Representation & Querying');
+});
+
+//html greeting message
+app.get('/name', (req, res) => {
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
+app.use(express.static('public')); //serve static assets 
 
 //error handling
 app.use((err, req, res, next) => {
