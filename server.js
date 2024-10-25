@@ -63,7 +63,18 @@ app.get('/name', (req, res) => {
     res.send(`Hello ${firstname} ${lastname}`);
 });
 
+//POST form submission
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/name', (req, res) => {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
 app.use(express.static('public')); //serve static assets 
+
 
 //error handling
 app.use((err, req, res, next) => {
