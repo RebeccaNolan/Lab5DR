@@ -2,11 +2,20 @@ const express = require('express');
 const app = express();
 const port = 4000;
 
+const path = require('path');
+
+//Path module from index.html
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // '/' local host - domain
 //listen for HTTP request
 app.get('/', (req, res) => { //req- request res - response
     res.send('Welcome to Data Representation & Querying');
 });
+
+app.use(express.static('public')); //serve static assets 
 
 //name
 app.get('/hello/:name', (req, res) => {
