@@ -5,12 +5,17 @@
 <body>
     <h1>Hello World</h1>
 
-    <form action="/name" method="GET">
+    <!-- GET - sends name and surname data to /name
+    using GET, which means the data is visible in the URL -->
+    <form action="/name" method="GET"> 
         First name: <input type="text" name="firstname"><br>
         Last name: <input type="text" name="lastname"><br>
         <input type="submit" value="Submit">
     </form>
-
+    
+    <!-- POST - sends same data using POST, 
+    meaning data is send in the body of the request.
+    Generally used for sensitive info - doesn't expose URL -->
     <form action="/name" method="POST">
         First name: <input type="text" name="firstname"><br>
         Last name: <input type="text" name="lastname"><br>
