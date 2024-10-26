@@ -1,11 +1,11 @@
-//Import express framwork
+//Import express framwork - used to create and manage a web server
 const express = require('express');
 const app = express(); //initialise an instance of espress
 const port = 4000; //define the port the server will listen on
 
 const path = require('path'); //defines path module to handle and transform file paths
 
-//route to greet user by name using URL parameters
+//route handles GET requests to greet user by name using URL parameters
 app.get('/hello/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello ${name}`); //send greeting message
@@ -78,6 +78,7 @@ app.post('/name', (req, res) => {
 });
 
 //server static files from the 'public' directory
+//any file in this dir can be accessed directly via URL
 app.use(express.static('public')); //serve static assets 
 
 //error handling
